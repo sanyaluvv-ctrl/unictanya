@@ -164,6 +164,29 @@
                 height: 84px;
             }
         }
+                /* Стили для иконок виджетов */
+        .widget-icon {
+            width: 48px;
+            height: 48px;
+            object-fit: cover;
+            display: block;
+            border-radius: 16px;
+            transition: transform 0.2s ease;
+        }
+        
+        /* Эффект при наведении на карточку — иконка слегка увеличивается */
+        .widget-card:hover .widget-icon {
+            transform: scale(1.05);
+        }
+        
+        /* Для мобильных устройств — чуть меньше иконки */
+        @media (max-width: 480px) {
+            .widget-icon {
+                width: 40px;
+                height: 40px;
+                border-radius: 12px;
+            }
+        }
     </style>
 </head>
 <body>
