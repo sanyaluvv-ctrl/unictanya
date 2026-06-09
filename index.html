@@ -206,17 +206,26 @@
     <h1>К нам приходят — от нас уезжают! <span class="brand-accent">🔑</span></h1>
     <div class="sub">Официальные каналы</div>
 
-    <!-- РЯД С КАРТИНКАМИ-ВИДЖЕТАМИ (3 в ряд) -->
+    <!-- РЯД С КАРТИНКАМИ-ВИДЖЕТАМИ (3 в ряд) с deep‑ссылками на VK -->
     <div class="widgets-row">
-        <a href="https://vk.com/market-3974927?screen=group" class="image-widget" target="_blank" rel="noopener">
+        <a href="vk://vk.com/market-3974927?screen=group"
+           onclick="openVkApp(event, 'vk://vk.com/market-3974927?screen=group', 'https://vk.com/market-3974927?screen=group')"
+           class="image-widget"
+           target="_blank" rel="noopener">
             <img src="widget-catalog.png" alt="Каталог автомобилей партнёров">
         </a>
 
-        <a href="https://vk.com/unic_tanya?w=app51715800_-3974927" class="image-widget" target="_blank" rel="noopener">
+        <a href="vk://vk.com/unic_tanya?w=app51715800_-3974927"
+           onclick="openVkApp(event, 'vk://vk.com/unic_tanya?w=app51715800_-3974927', 'https://vk.com/unic_tanya?w=app51715800_-3974927')"
+           class="image-widget"
+           target="_blank" rel="noopener">
             <img src="widget-calc.png" alt="Расчёт под вашу ситуацию">
         </a>
 
-        <a href="https://vk.com/im/channels/-230859738" class="image-widget" target="_blank" rel="noopener">
+        <a href="vk://vk.com/im/channels/-230859738"
+           onclick="openVkApp(event, 'vk://vk.com/im/channels/-230859738', 'https://vk.com/im/channels/-230859738')"
+           class="image-widget"
+           target="_blank" rel="noopener">
             <img src="widget-stories.png" alt="Истории клиентов">
         </a>
     </div>
@@ -260,5 +269,21 @@
         Нажмите на кнопку — перейдёте на нужный ресурс
     </div>
 </div>
+
+<script>
+    function openVkApp(event, appUrl, webUrl) {
+        event.preventDefault();
+
+        const start = Date.now();
+
+        window.location.href = appUrl;
+
+        setTimeout(function () {
+            if (Date.now() - start < 1600) {
+                window.location.href = webUrl;
+            }
+        }, 1200);
+    }
+</script>
 </body>
 </html>
