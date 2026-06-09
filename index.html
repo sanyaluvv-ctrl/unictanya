@@ -74,11 +74,41 @@
             font-weight: 500;
         }
 
+        /* РЯД С КАРТИНКАМИ-ВИДЖЕТАМИ (3 в ряд) */
+        .widgets-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin: 28px 0 24px;
+        }
+
+        .image-widget {
+            display: block;
+            border-radius: 12px;
+            overflow: hidden;
+            text-decoration: none;
+            background: #fff;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .image-widget img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+        }
+
+        .image-widget:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+        }
+
+        /* КНОПКИ СО ССЫЛКАМИ */
         .buttons-group {
             display: flex;
             flex-direction: column;
             gap: 14px;
-            margin: 32px 0 24px;
+            margin: 0 0 24px;
         }
 
         .tap-btn {
@@ -110,11 +140,6 @@
             object-fit: contain;
         }
 
-        .btn-emoji {
-            font-size: 1.5rem;
-            filter: drop-shadow(0 1px 1px rgba(0,0,0,0.05));
-        }
-
         .arrow-icon {
             color: #FFD317;
             font-size: 1.3rem;
@@ -141,85 +166,6 @@
             margin-top: 6px;
         }
 
-        /* Стили для карточек-виджетов */
-        .widget-card {
-            background: #fefcf8;
-            border-radius: 32px;
-            padding: 20px 20px 20px 24px;
-            margin-bottom: 16px;
-            text-align: left;
-            border: 1px solid #f0eadb;
-            transition: all 0.2s ease;
-        }
-
-        .widget-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 8px;
-        }
-
-        .widget-title {
-            font-weight: 800;
-            font-size: 1.2rem;
-            color: #1a2c2e;
-            letter-spacing: 0.5px;
-        }
-
-        .widget-desc {
-            font-size: 0.85rem;
-            color: #6a7a6a;
-            margin-bottom: 16px;
-            padding-left: 52px;
-        }
-
-        .widget-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: space-between;
-            background: transparent;
-            padding: 8px 0;
-            border-radius: 100px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: #FFD317;
-            transition: all 0.2s;
-            width: 100%;
-            border-top: 1px dashed #e9e2d3;
-            margin-top: 4px;
-            padding-top: 14px;
-        }
-
-        .widget-btn .arrow-icon {
-            color: #FFD317;
-            font-size: 1.1rem;
-        }
-
-        .widget-btn:hover {
-            color: #e6be00;
-        }
-
-        .widget-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-            border-color: #FFD317;
-        }
-
-        /* Стили для иконок виджетов */
-        .widget-icon {
-            width: 48px;
-            height: 48px;
-            object-fit: cover;
-            display: block;
-            border-radius: 16px;
-            transition: transform 0.2s ease;
-        }
-
-        .widget-card:hover .widget-icon {
-            transform: scale(1.05);
-        }
-
         @media (max-width: 480px) {
             .card {
                 padding: 24px 20px 32px;
@@ -231,9 +177,6 @@
                 padding: 12px 18px;
                 font-size: 0.95rem;
             }
-            .btn-emoji {
-                font-size: 1.3rem;
-            }
             .btn-icon {
                 width: 16px;
                 height: 16px;
@@ -242,13 +185,14 @@
                 width: 84px;
                 height: 84px;
             }
-            .widget-icon {
-                width: 40px;
-                height: 40px;
-                border-radius: 12px;
+            .widgets-row {
+                gap: 6px;
             }
-            .widget-desc {
-                padding-left: 44px;
+            .image-widget {
+                border-radius: 10px;
+            }
+            .image-widget img {
+                border-radius: 10px;
             }
         }
     </style>
@@ -262,8 +206,23 @@
     <h1>К нам приходят — от нас уезжают! <span class="brand-accent">🔑</span></h1>
     <div class="sub">Официальные каналы</div>
 
+    <!-- РЯД С КАРТИНКАМИ-ВИДЖЕТАМИ (3 в ряд) -->
+    <div class="widgets-row">
+        <a href="ССЫЛКА_НА_КАТАЛОГ" class="image-widget" target="_blank" rel="noopener">
+            <img src="widget-catalog.png" alt="Каталог автомобилей партнёров">
+        </a>
+
+        <a href="ССЫЛКА_НА_РАССЧЕТ" class="image-widget" target="_blank" rel="noopener">
+            <img src="widget-calc.png" alt="Расчёт под вашу ситуацию">
+        </a>
+
+        <a href="ССЫЛКА_НА_ИСТОРИИ" class="image-widget" target="_blank" rel="noopener">
+            <img src="widget-stories.png" alt="Истории клиентов">
+        </a>
+    </div>
+
+    <!-- КНОПКИ СО ССЫЛКАМИ -->
     <div class="buttons-group">
-        <!-- КНОПКИ СО ССЫЛКАМИ -->
         <a href="https://авто-рассрочка.рф/" class="tap-btn" target="_blank" rel="noopener">
             <span class="btn-left">
                 <img src="web.png" alt="сайт" class="btn-icon">
@@ -295,43 +254,6 @@
             </span>
             <span class="arrow-icon">→</span>
         </a>
-
-        <!-- КАРТОЧКИ-ВИДЖЕТЫ -->
-        <div class="widget-card">
-            <div class="widget-header">
-                <img src="widget-catalog.png" alt="Каталог" class="widget-icon">
-                <span class="widget-title">КАТАЛОГ</span>
-            </div>
-            <div class="widget-desc">Автомобили наших партнёров</div>
-            <a href="ССЫЛКА_НА_КАТАЛОГ" class="widget-btn" target="_blank">
-                <span>Посмотреть каталог</span>
-                <span class="arrow-icon">→</span>
-            </a>
-        </div>
-
-        <div class="widget-card">
-            <div class="widget-header">
-                <img src="widget-calc.png" alt="Рассчёт" class="widget-icon">
-                <span class="widget-title">РАССЧЁТ</span>
-            </div>
-            <div class="widget-desc">Подберём вариант под вашу ситуацию</div>
-            <a href="ССЫЛКА_НА_РАССЧЁТ" class="widget-btn" target="_blank">
-                <span>Рассчитать</span>
-                <span class="arrow-icon">→</span>
-            </a>
-        </div>
-
-        <div class="widget-card">
-            <div class="widget-header">
-                <img src="widget-stories.png" alt="Истории" class="widget-icon">
-                <span class="widget-title">ИСТОРИИ</span>
-            </div>
-            <div class="widget-desc">Как люди уезжают на своих авто</div>
-            <a href="ССЫЛКА_НА_ИСТОРИИ" class="widget-btn" target="_blank">
-                <span>Смотреть истории</span>
-                <span class="arrow-icon">→</span>
-            </a>
-        </div>
     </div>
 
     <div class="footer-note">
